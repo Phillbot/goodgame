@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/goodgame/static/css/main.37c78aaf.chunk.css",
+    "main.js": "/goodgame/static/js/main.ad4c93cb.chunk.js",
+    "main.js.map": "/goodgame/static/js/main.ad4c93cb.chunk.js.map",
+    "runtime-main.js": "/goodgame/static/js/runtime-main.4f5cce7c.js",
+    "runtime-main.js.map": "/goodgame/static/js/runtime-main.4f5cce7c.js.map",
+    "static/css/2.80a88a6b.chunk.css": "/goodgame/static/css/2.80a88a6b.chunk.css",
+    "static/js/2.958c2af8.chunk.js": "/goodgame/static/js/2.958c2af8.chunk.js",
+    "static/js/2.958c2af8.chunk.js.map": "/goodgame/static/js/2.958c2af8.chunk.js.map",
+    "index.html": "/goodgame/index.html",
+    "precache-manifest.137adf78732f1545a2117b66be558f36.js": "/goodgame/precache-manifest.137adf78732f1545a2117b66be558f36.js",
+    "service-worker.js": "/goodgame/service-worker.js",
+    "static/css/2.80a88a6b.chunk.css.map": "/goodgame/static/css/2.80a88a6b.chunk.css.map",
+    "static/css/main.37c78aaf.chunk.css.map": "/goodgame/static/css/main.37c78aaf.chunk.css.map",
+    "static/js/2.958c2af8.chunk.js.LICENSE.txt": "/goodgame/static/js/2.958c2af8.chunk.js.LICENSE.txt",
+    "static/media/error.gif": "/goodgame/static/media/error.e3ebc48c.gif",
+    "static/media/new-logo.svg": "/goodgame/static/media/new-logo.acc10b3e.svg",
+    "static/media/index.css": "/goodgame/static/media/roboto-latin-900italic.ebf6d164.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4f5cce7c.js",
+    "static/css/2.80a88a6b.chunk.css",
+    "static/js/2.958c2af8.chunk.js",
+    "static/css/main.37c78aaf.chunk.css",
+    "static/js/main.ad4c93cb.chunk.js"
+  ]
+}
