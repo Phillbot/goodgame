@@ -1,11 +1,37 @@
 import { makeStyles, Theme, createStyles } from "@material-ui/core";
-import { grey } from "@material-ui/core/colors";
+import { grey, blue } from "@material-ui/core/colors";
 
 export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    fullHeight: {
+      minHeight: "100vh",
+    },
+
+    noFullHeight: {
+      minHeight: "80vh",
+      top: "10vh",
+      bottom: "10vh",
+    },
+
+    tabs: {
+      margin: theme.spacing(4),
+    },
+
+    tab: {
+      color: "#d5d5d5!important",
+    },
+
     link: {
       textDecoration: "none",
-      color: grey["A400"],
+      color: grey["A100"],
+    },
+
+    streamMainBlue: {
+      color: blue["A200"],
+    },
+
+    linkDecoration: {
+      color: blue["A100"],
     },
     streamPrev: {
       maxWidth: "100%",
@@ -29,14 +55,6 @@ export const useStyles = makeStyles((theme: Theme) =>
     showMoreButton: {
       margin: theme.spacing(2, 0),
       width: "100%",
-      background: "#3f51b5",
-      color: "white",
-      transition: ".6s",
-      "&:hover": {
-        background: "#3f51b5",
-        color: "white",
-        opacity: 0.9,
-      },
     },
 
     gamePrev: {
@@ -54,12 +72,24 @@ export const useStyles = makeStyles((theme: Theme) =>
 
     streamDesriptionContainer: {
       padding: theme.spacing(2),
+      color: grey["A100"],
+
+      "& a": {
+        display: "inline-block!important",
+        color: blue["A100"],
+      },
     },
 
     channelHeaderImgContainer: {
-      maxWidth:75,
-      height:75,
-      margin:"10px auto"
+      maxWidth: 75,
+      height: 75,
+      margin: "10px auto",
+    },
+
+    gamePosterImgContainer: {
+      width: "100%",
+      minHeight: 500,
+      margin: theme.spacing(2),
     },
   })
 );

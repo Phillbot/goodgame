@@ -1,8 +1,9 @@
 import { combineReducers } from "redux";
-import { streamListReducer } from "./redusers";
+import { streamerReducer, closeChatReducer } from "./redusers";
 
 const rootReducer = combineReducers({
-  streamListReducer,
+  streamerReducer,
+  closeChatReducer,
 });
 
 export default rootReducer;

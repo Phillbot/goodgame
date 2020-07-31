@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import { useStyles } from "../styles";
 import { getAllGamesFetch } from "../service";
 import { Link } from "react-router-dom";
-import { Grid, Button, Typography } from "@material-ui/core";
+import { Grid, Button, Typography, Grow } from "@material-ui/core";
 
 import {
   MainCenteredLoader,
@@ -55,9 +55,6 @@ export const Games = React.memo((props: any) => {
     setPage((page) => page + 1);
   };
 
-  console.log(gameList);
-  console.log(page_count);
-
   if (!isLoaded) {
     return <MainCenteredLoader />;
   } else {
@@ -76,22 +73,24 @@ export const Games = React.memo((props: any) => {
                 const { id, poster, title, url } = game;
 
                 return (
-                  <Grid item key={id} lg={2} sm={4} xs={6}>
-                    <Link to={`/games/${url}`} className={classes.link}>
-                      <div
-                        className={classes.gamePrev}
-                        style={{
-                          background: `url(${poster})`,
-                          backgroundSize: "100%",
-                          backgroundPosition: "center",
-                          backgroundRepeat: "no-repeat",
-                        }}
-                      ></div>
-                      <Typography align="center" noWrap={true}>
-                        {title}
-                      </Typography>
-                    </Link>
-                  </Grid>
+                  <Grow key={id} in={isLoaded} timeout={1200}>
+                    <Grid item lg={2} sm={4} xs={6}>
+                      <Link to={`/games/${url}`} className={classes.link}>
+                        <div
+                          className={classes.gamePrev}
+                          style={{
+                            background: `url(${poster})`,
+                            backgroundSize: "100%",
+                            backgroundPosition: "center",
+                            backgroundRepeat: "no-repeat",
+                          }}
+                        ></div>
+                        <Typography align="center" noWrap={true}>
+                          {title}
+                        </Typography>
+                      </Link>
+                    </Grid>
+                  </Grow>
                 );
               })
             ) : (
@@ -102,7 +101,12 @@ export const Games = React.memo((props: any) => {
           {!newLoaded && gameList.length > 0 && <SimpleCenteredLoader />}
 
           {page_count !== page && newLoaded && (
-            <Button className={classes.showMoreButton} onClick={addPage}>
+            <Button
+              color="primary"
+              variant="contained"
+              className={classes.showMoreButton}
+              onClick={addPage}
+            >
               Показать еще
             </Button>
           )}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getAllStreamsFetch } from "../service";
-import { Grid, Box, Typography, Button } from "@material-ui/core";
+import { Grid, Box, Typography, Button, Grow } from "@material-ui/core";
 import { useStyles } from "../styles";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
@@ -61,7 +61,7 @@ export const Streams = React.memo((props: any) => {
     return <MainCenteredLoader />;
   } else {
     if (error) {
-      return <MainCenteredError />
+      return <MainCenteredError />;
     } else {
       return (
         <>
@@ -71,7 +71,7 @@ export const Streams = React.memo((props: any) => {
             </Helmet>
 
             {streamList.length > 0 ? (
-              streamList.flat().map((stream: any, i:number) => {
+              streamList.flat().map((stream: any, i: number) => {
                 const {
                   player_viewers,
                   key,
@@ -80,35 +80,40 @@ export const Streams = React.memo((props: any) => {
 
                 const game = games[0].title;
                 return (
-                  <Grid item key={i} lg={4} sm={6} xs={12}>
-                    <Link to={`/channel/${key}`} className={classes.link}>
-                      <Box className={classes.userOnlineMainBox}>
-                        <Box className={classes.userOnlineBox}>
-                          <Grid container spacing={2}>
-                            <Grid item xs={6}>
-                              <PeopleAltIcon fontSize="small" />
+                  <Grow key={i} in={isLoaded} timeout={1200}>
+                    <Grid item lg={4} sm={6} xs={12}>
+                      <Link to={`/channel/${key}`} className={classes.link}>
+                        <Box className={classes.userOnlineMainBox}>
+                          <Box className={classes.userOnlineBox}>
+                            <Grid container spacing={2}>
+                              <Grid item xs={6}>
+                                <PeopleAltIcon fontSize="small" />
+                              </Grid>
+                              <Grid item xs={6}>
+                                {player_viewers}
+                              </Grid>
                             </Grid>
-                            <Grid item xs={6}>
-                              {player_viewers}
-                            </Grid>
-                          </Grid>
-                        </Box>
+                          </Box>
 
-                        <img
-                          src={thumb}
-                          alt=""
-                          className={classes.streamPrev}
-                        />
-                        <Typography noWrap={true} color="primary">
-                          {key}
-                        </Typography>
-                        <Typography noWrap={true}>{title}</Typography>
-                        <Typography variant="caption" paragraph noWrap={true}>
-                          {game}
-                        </Typography>
-                      </Box>
-                    </Link>
-                  </Grid>
+                          <img
+                            src={thumb}
+                            alt=""
+                            className={classes.streamPrev}
+                          />
+                          <Typography
+                            noWrap={true}
+                            className={classes.streamMainBlue}
+                          >
+                            {key}
+                          </Typography>
+                          <Typography noWrap={true}>{title}</Typography>
+                          <Typography variant="caption" paragraph noWrap={true}>
+                            {game}
+                          </Typography>
+                        </Box>
+                      </Link>
+                    </Grid>
+                  </Grow>
                 );
               })
             ) : (
@@ -119,7 +124,12 @@ export const Streams = React.memo((props: any) => {
           {!newLoaded && streamList.length > 0 && <SimpleCenteredLoader />}
 
           {page_count !== page && newLoaded && (
-            <Button className={classes.showMoreButton} onClick={addPage}>
+            <Button
+              color="primary"
+              variant="contained"
+              className={classes.showMoreButton}
+              onClick={addPage}
+            >
               Показать еще
             </Button>
           )}

@@ -1,3 +1,18 @@
-// body, html, .app {
-//     // background: #0d1221;
-// }
+body,
+html,
+.app {
+  background: #0d1221;
+  ::-webkit-scrollbar {
+    width: 9px;
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(194, 180, 180, 0.3);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgb(141, 139, 149);
+  }
+}

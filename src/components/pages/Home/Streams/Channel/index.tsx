@@ -9,9 +9,14 @@ import { useStyles } from "../../styles";
 
 import ReactHtmlParser from "react-html-parser";
 import { Link } from "react-router-dom";
+import { replaceEmptyTags } from "../../../../../functions/replace-empy-tags";
+import { useDispatch } from "react-redux";
+import { universalAction } from "../../../../../actions/universalAction";
 
 export const Channel = (props: any) => {
   const classes = useStyles();
+
+  const dispatch = useDispatch();
 
   const routerParams = useParams<any>();
 
@@ -40,6 +45,8 @@ export const Channel = (props: any) => {
   useEffect(() => {
     let isSubscribed = true;
 
+    dispatch(universalAction("ADD_STREAMER", routerParams.channelKey));
+
     getChannelDataFetch(routerParams.channelKey).then((res: any) => {
       const { error, result } = res;
       if (isSubscribed) {
@@ -52,9 +59,12 @@ export const Channel = (props: any) => {
     });
 
     return () => {
+      dispatch(universalAction("REMOVE_STREAMER", routerParams.channelKey));
       isSubscribed = false;
     };
-  }, [routerParams.channelKey]);
+  }, [routerParams.channelKey, dispatch]);
+
+  console.log(description);
 
   if (!isLoaded) {
     return <MainCenteredLoader />;
@@ -90,11 +100,16 @@ export const Channel = (props: any) => {
                     <Link
                       to={`/channel/${routerParams.channelKey}`}
                       target="_blank"
+                      className={classes.linkDecoration}
                     >
                       {routerParams.channelKey}
                     </Link>{" "}
                     играет в{" "}
-                    <Link to={`/games/${games[0].url}`} target="_blank">
+                    <Link
+                      to={`/games/${games[0].url}`}
+                      target="_blank"
+                      className={classes.linkDecoration}
+                    >
                       {games[0].title}
                     </Link>
                   </Typography>
@@ -107,7 +122,7 @@ export const Channel = (props: any) => {
             </Grid>
 
             <Grid item xs={12} className={classes.streamDesriptionContainer}>
-              {ReactHtmlParser(description)}
+              {ReactHtmlParser(replaceEmptyTags(description))}
             </Grid>
           </Grid>
         </>
