@@ -48,7 +48,7 @@ export const App = () => {
 
   return (
     <MuiThemeProvider theme={theme}>
-      <BrowserRouter>
+      <BrowserRouter basename="goodgame">
         <ScrollToTop>
           <CssBaseline />
           <div className="app">
